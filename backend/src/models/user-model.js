@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = (sequelize, DataTypes) => {
     const bcrypt = require("bcrypt");
     
@@ -50,11 +48,13 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     user.associate = function(models) {
-        // associations can be defined here
+
     };
+
     user.prototype.validPassword = async (password, hash) => {
         return await bcrypt.compareSync(password, hash);
     }
+    
     return user;
 };
 

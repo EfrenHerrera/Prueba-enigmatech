@@ -1,34 +1,6 @@
 const db = require("../config/db/postgres");
-const User = db.user;
-const Op = db.Sequelize.Op;
-
-exports.loginUser = (req, res) => {
-    if (!req.body.email) {
-        res.status(400).send({
-            message: "Content can not be empty!",
-        });
-        return;
-    }
-
-    User.findOne({ where: { "email": `${req.body.email}` } })
-        .then( async (data) => {
-            if (data) {
-                if (!data.dataValues.password || !await data.validPassword(req.body.password, data.dataValues.password)) {
-                    resolve(false);
-                } 
-                res.send(data);
-            } else {
-                res.status(404).send({
-                message: `Cannot find user.`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error retrieving User with email" + req.body.email
-            });
-        });
-};
+const jwt = require('jsonwebtoken');
+const User = db.models.user;
 
 exports.userCreate = (req, res) => {
 
@@ -48,7 +20,12 @@ exports.userCreate = (req, res) => {
 
     User.create(user)
         .then((data) => {
-            res.send(data);
+            const token = jwt.sign(
+                { userId:  data.dataValues.id, email:  data.dataValues.email }, 'somesupersecretkey',
+                { expiresIn: '5h' }
+            );
+            
+            res.send({data, token });
         })
         .catch((err) => {
             res.status(500).send({

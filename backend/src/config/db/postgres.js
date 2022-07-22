@@ -17,6 +17,16 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 const routeBase = "../../models"
-db.user = require(`${routeBase}/user-model`)(sequelize, Sequelize);
+
+db.models = {
+    user: require(`${routeBase}/user-model`)(sequelize, Sequelize),
+    track: require(`${routeBase}/track-model`)(sequelize, Sequelize)
+}
+
+Object.keys(db.models).forEach(modelName => {
+    if (db.models[modelName].associate) {
+        db.models[modelName].associate(db.models);
+    }
+});
 
 module.exports = db;
