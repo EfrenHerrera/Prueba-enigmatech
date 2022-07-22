@@ -6,9 +6,9 @@ import { withStyles } from '@mui/styles';
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import themeColors from "assets/theme/colors";
 
 // core components
+import themeColors from "assets/theme/colors";
 
 
 const styles = theme =>({
@@ -27,11 +27,10 @@ class AuthLayout extends Component {
     return (
       <>
         <div>
-          
+          {/* Content Views */}
           <Container
             component={Box}
-            maxWidth="xl"
-          >
+            maxWidth="xl">
             <Box component={Grid} container className={classes.container}>
               <Outlet />
             </Box>

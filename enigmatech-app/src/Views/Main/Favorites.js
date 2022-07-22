@@ -1,24 +1,19 @@
 import React, { useEffect } from "react";
-
-// import DrawerCliente from "components/Drawers/DrawerCliente";
-// import DrawerClienteEdit from "components/Drawers/DrawerClienteEdit";
-import TableCustom from "./Components/TableCustom";
-import { GridActionsCellItem } from '@mui/x-data-grid';
-
-import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-import MoreOutlinedIcon from '@mui/icons-material/MoreOutlined';
-
-// import { useSearch } from "Hooks/useSearch";
-import { makeStyles } from "@mui/styles";
-import { useDispatch, useSelector } from "react-redux";
-// import { ChargeClientes, setToUpdate, Deleting } from "actions/clienteActions";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
-import { getFavoritesUser } from "redux/actions/favoriteTracksActions";
 import { useCookies } from "react-cookie";
+import { useDispatch, useSelector } from "react-redux";
+
+
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
+import { GridActionsCellItem } from '@mui/x-data-grid';
+import { makeStyles } from "@mui/styles";
+
 import { useSearch } from "Hooks/useSearch";
+import TableCustom from "./Components/TableCustom";
 import DrawerFavoriteEdit from "./Components/DrawerFavoriteEdit";
+import { getFavoritesUser } from "redux/actions/favoriteTracksActions";
 import { setTrackFavorite } from "redux/actions/favoriteTracksActions";
 import { DeleteFavorite } from "redux/actions/favoriteTracksActions";
 
@@ -120,6 +115,7 @@ const Favorites = () => {
             },
         ],
     }
+    
     return (
         <>
             <TableCustom

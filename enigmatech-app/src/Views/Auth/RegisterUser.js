@@ -60,7 +60,7 @@ const RegisterUser = () => {
 
     const onSubmit = async (data) => {
         dispatch(RegisterNewUser(data, setCookie));
-        // reset(defaultValues);
+        reset(defaultValues);
     };
 
     return (

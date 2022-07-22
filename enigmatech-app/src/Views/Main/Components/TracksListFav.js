@@ -1,10 +1,5 @@
 import React from 'react'
-import { Box, Card, CardContent, CardMedia, IconButton, ImageList, ImageListItem, Typography } from '@mui/material'
-
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import { useTheme } from '@mui/material/styles';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material'
 
 const TracksListFav = ({ favorites }) => {
 

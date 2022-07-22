@@ -22,6 +22,7 @@ export const authReducer = ( state = initialState , action ) => {
                 ...state,
                 tokenSpotify: action.payload
             }
+            
         default:
             return state;
     }

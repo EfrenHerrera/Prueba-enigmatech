@@ -6,9 +6,9 @@ import { withCookies } from "react-cookie";
 // @mui/material components
 import Box from "@mui/material/Box";
 import Navbar from "./Components/Navbar";
-import { logout } from "redux/actions/authActions";
 
 // core components
+import { logout } from "redux/actions/authActions";
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -26,6 +26,7 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 class AdminLayout extends Component {
+
   // handles
   handleLogout = () => {
     const { logout, cookies } = this.props;
@@ -35,6 +36,7 @@ class AdminLayout extends Component {
   handleGotoFavoritos = () => {
       this.props.router.navigate(this.props.router.location.pathname !== "/favorites" ? 'favorites': '/');
   }
+
   render(){
     
     return (
@@ -43,6 +45,7 @@ class AdminLayout extends Component {
           location={this.props.router.location.pathname}
           handleLogout={this.handleLogout}  
           handleGotoFavoritos={this.handleGotoFavoritos} />
+          
         {/* Content Views */}
         <Box sx={{ marginTop: '65px' }}>
           <Outlet />

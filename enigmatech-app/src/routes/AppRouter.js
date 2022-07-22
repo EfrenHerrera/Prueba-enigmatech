@@ -1,6 +1,5 @@
 import React from 'react';
 import { useCookies, withCookies } from 'react-cookie';
-import { useDispatch } from 'react-redux';
 import { 
     Navigate, Outlet, Routes, 
     useLocation, Route, BrowserRouter 
@@ -15,16 +14,9 @@ import AuthLayout from "Views/Layout/Auth";
 import routes from "./routes.js";
 
 function RequireAuth({ children }) {
-    let auth = useAuth(); // tiene contexto
+    let auth = useAuth();
     let location = useLocation(); 
-    const dispatch = useDispatch()
 
-    // trae datos para mostrar
-    if (auth.authToken) {
-        // dispatch(GetUserAuth(`user/${auth.authToken}`));
-    }
-
-    // si no esta logueado redige al login
     if (!auth.authToken) {
         return <Navigate to="/auth/login" state={{ from: location }} />;
     }
@@ -37,7 +29,6 @@ function NotRequireAuth({ children }) {
     let location = useLocation();
 
     if (auth.authToken) {
-    // if (true) {
         return <Navigate to="/" state={{ from: location }} />;
     }
 
@@ -111,7 +102,6 @@ const AppRouter = () => {
                         <Route path="register" element={<RegisterUser />} />
                         <Route path="*"  element={ <Navigate to="login" />} />
                     </Route>
-                    
                 </Routes>
                 <Outlet />
             </AuthContext.Provider>

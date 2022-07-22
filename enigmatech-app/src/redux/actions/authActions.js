@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2';
 import Axios from "axios";
 
 import { BaseUrlLocal, types } from '../types';
@@ -48,12 +47,7 @@ export const RegisterNewUser = (data, setCookie) => {
         await Axios.post(BaseUrlLocal + url, data).then(resp => {
             setCookie('authToken', resp.data, { path: '/', expires: new Date(Date.now() + 1 * 60 * 24 * 365 * 365 * 365) })
             dispatch(login(resp.data));
-        }).catch(e => {
-            // Swal.fire({
-            //     icon: 'error',
-            //     title: 'El email o contraseña son incorrectos.',
-            // });
-        });
+        }).catch(e => {});
     }
 }
 

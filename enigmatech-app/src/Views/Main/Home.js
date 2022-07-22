@@ -48,9 +48,7 @@ class Home extends Component {
                 setTokenSpotify(resp.data.access_token)
             }
         } 
-
-        // setTimeout(() => {
-        // }, 3600);
+        
         const obj = JSON.parse(cookies.cookies.authToken);
         getFavoritesUser(obj.data !== undefined ? obj.data.id : obj.id)
 

@@ -29,7 +29,6 @@ export const EditFavorite = (data, id) => {
         const url = `tracks/${id}`;
         await Axios.put(BaseUrlLocal + url, data).then(resp => {
             if(resp.status === 200){
-                // Swal.
                 dispatch(setEditFavorite(data))
             }
         }).catch(e => {
